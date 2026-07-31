@@ -52,3 +52,35 @@
     });
   }
 })();
+
+// Modo oscuro
+(function () {
+  "use strict";
+
+  var THEME_KEY = "setea-theme";
+  var root = document.documentElement;
+  var toggleBtn = document.getElementById("themeToggle");
+  var metaThemeColor = document.querySelector('meta[name="theme-color"]');
+
+  function updateToggleUI(theme) {
+    if (!toggleBtn) return;
+    var icon = toggleBtn.querySelector("i");
+    if (icon) icon.className = theme === "dark" ? "bi bi-sun-fill" : "bi bi-moon-stars-fill";
+    toggleBtn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+    toggleBtn.setAttribute("aria-label", theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
+    if (metaThemeColor) metaThemeColor.setAttribute("content", theme === "dark" ? "#12181a" : "#7FB8A4");
+  }
+
+  updateToggleUI(root.getAttribute("data-theme") || "light");
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try {
+        localStorage.setItem(THEME_KEY, next);
+      } catch (e) {}
+      updateToggleUI(next);
+    });
+  }
+})();

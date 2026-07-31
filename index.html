@@ -10,6 +10,19 @@
     <link rel="canonical" href="https://www.setea.com.ar/">
     <meta name="theme-color" content="#7FB8A4">
 
+    <!-- Aplica el tema guardado antes de pintar la página, para evitar parpadeos -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("setea-theme");
+          if (t !== "dark" && t !== "light") {
+            t = "light";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="images/Setea_logo_solo.png">
@@ -59,7 +72,13 @@
             <li class="nav-item"><a class="nav-link" href="#tecnoyarq">Tecnología y arquitectura</a></li>
             <li class="nav-item"><a class="nav-link" href="#integraciones">Integraciones</a></li>
             <li class="nav-item"><a class="nav-link" href="#otros">Otros WMS</a></li>
-          </ul><a class="btn btn-primary" href="#contact">Comenzá ahora</a>
+          </ul>
+          <div class="d-flex align-items-center gap-2">
+            <a class="btn btn-primary" href="#contact">Comenzá ahora</a>
+            <button type="button" class="theme-toggle" id="themeToggle" aria-label="Cambiar a modo oscuro" aria-pressed="false" title="Cambiar tema">
+              <i class="bi bi-moon-stars-fill" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
       </div>
     </nav>
