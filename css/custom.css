@@ -134,7 +134,7 @@
 
 /* -------------------- Hero -------------------- */
 .hero-wms {
-  background-image: linear-gradient(120deg, rgba(52, 58, 64, 0.55), rgba(52, 58, 64, 0.25) 55%), url("../images/Deposito-WMS-hero.jpg");
+  background-image: linear-gradient(120deg, rgba(52, 58, 64, 0.55), rgba(52, 58, 64, 0.25) 55%), url("../images/Deposito-WMS-hero.png");
   overflow: hidden;
 }
 
